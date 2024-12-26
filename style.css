@@ -99,7 +99,7 @@ main {
     left: 50vw;
     border: none;
     width: 400px;
-    height: 250px;
+    height: 300px;
     padding: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     border-radius: 16px;
@@ -140,4 +140,9 @@ main {
 
 .form input[type="checkbox"] {
     justify-self: left;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
 }

@@ -84,8 +84,18 @@ function closeAddBookDialog() {
 }
 
 function confirmAddBookDialog(e) {
+    if (!addBookForm.checkValidity()) {
+        document.querySelectorAll("input").forEach(input => {
+            if (input.validity.valueMissing) {
+                input.nextSibling.textContent = "Ce champ est requis."
+            }
+        });
+
+        e.preventDefault();
+        return;
+    }
+
     const formData = Object.fromEntries(new FormData(addBookForm));
-    console.log(formData.read);
     addBookToLibrary(myLibrary, formData.author, formData.title, formData.pages, (formData.read === "on") );
     displayBooks();
     addBookForm.reset();
@@ -97,3 +107,7 @@ function deleteBook(e) {
     myLibrary.splice(parseInt(e.target.parentElement.parentElement.dataset.id), 1);
     displayBooks();
 }
+
+document.querySelectorAll("input").forEach(input => input.addEventListener("input", (e) => {
+    if (e.target.validity.valid) e.target.nextSibling.textContent = "";
+}));
