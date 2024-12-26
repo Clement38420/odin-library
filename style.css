@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Trebuchet MS", sans-serif;
+    text-align: center;
+    background: lightgrey;
+}
+
+header {
+    padding: 16px 0 16px 0;
+}
+
+main {
+    padding: 32px;
+}
+
+.books-container {
+    display: grid;
+    grid-auto-columns: 150px;
+    grid-auto-rows: 100px;
+    gap: 16px;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 10px;
+    justify-content: space-around;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
