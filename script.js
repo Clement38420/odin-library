@@ -1,4 +1,6 @@
-const booksContainer = document.querySelector(".books-container")
+const booksContainer = document.querySelector(".books-container");
+const addBookDialog = document.querySelector("#add-book-dialog");
+const addBookForm = document.querySelector("form");
 
 const myLibrary = [];
 
@@ -26,7 +28,29 @@ function createBookCard(book) {
 }
 
 function displayBooks() {
+    booksContainer.innerHTML = "";
     for (let book of myLibrary) {
         createBookCard(book);
     }
+}
+
+document.querySelector(".add-book").addEventListener("click", showAddBookDialog);
+document.querySelector("#cancel").addEventListener("click", closeAddBookDialog);
+document.querySelector("#submit-book").addEventListener("click", confirmAddBookDialog);
+
+function showAddBookDialog() {
+    addBookDialog.showModal();
+}
+
+function closeAddBookDialog() {
+    addBookDialog.close();
+}
+
+function confirmAddBookDialog(e) {
+    const formData = Object.fromEntries(new FormData(addBookForm));
+    addBookToLibrary(myLibrary, formData.author, formData.title, formData.pages);
+    displayBooks();
+    addBookForm.reset();
+    addBookDialog.close();
+    e.preventDefault();
 }

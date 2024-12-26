@@ -9,10 +9,26 @@
 <body>
 <header>
     <h1>Library</h1>
+    <button class="btn add-book">Add book</button>
 </header>
 
 <main>
     <div class="books-container"> </div>
 </main>
+
+<dialog id="add-book-dialog">
+    <form action="" method="dialog" class="form">
+        <label for="book-title">Title</label>
+        <input type="text" aria-label="title" placeholder="Title" id="book-title" name="title">
+        <label for="book-title">Author</label>
+        <input type="text" aria-label="author" placeholder="Author" id="book-author" name="author">
+        <label for="book-title">Pages number</label>
+        <input type="number" aria-label="pages" placeholder="Pages" id="book-pages" name="pages">
+        <div class="form-buttons">
+            <input type="reset" aria-label="Cancel" value="Cancel" class="btn cancel" id="cancel">
+            <input type="submit" aria-label="Add book" value="Add" class="btn" id="submit-book">
+        </div>
+    </form>
+</dialog>
 </body>
 </html>
