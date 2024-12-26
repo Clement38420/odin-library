@@ -17,12 +17,19 @@ function addBookToLibrary(library, author, title, pages) {
 function createBookCard(book) {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
+    bookCard.dataset.id = myLibrary.indexOf(book).toString();
 
     for (let bookProperty in book) {
         const span = document.createElement("span");
         span.innerText = book[bookProperty];
         bookCard.appendChild(span);
     }
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("btn", "cancel", "delete-book-btn");
+    deleteBtn.innerText = "Delete";
+    deleteBtn.addEventListener("click", deleteBook);
+    bookCard.appendChild(deleteBtn)
 
     booksContainer.appendChild(bookCard);
 }
@@ -53,4 +60,9 @@ function confirmAddBookDialog(e) {
     addBookForm.reset();
     addBookDialog.close();
     e.preventDefault();
+}
+
+function deleteBook(e) {
+    myLibrary.splice(parseInt(e.target.parentElement.dataset.id), 1);
+    displayBooks();
 }
